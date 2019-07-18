@@ -6,7 +6,9 @@ export const validateLogin = Yup.object().shape({
 });
 
 export const validateEmail = Yup.object().shape({
-  email: Yup.string().required('Field required').email('Incorrect email')
+  email: Yup.string()
+    .required('Field required')
+    .email('Incorrect email'),
 });
 
 export const addProductSchema = Yup.object().shape({
@@ -20,4 +22,11 @@ export const addProductSchema = Yup.object().shape({
   price: Yup.number('Must be a number')
     .required('Number is required')
     .integer('Must be a number'),
+});
+
+export const validateMessage = Yup.object().shape({
+  message: Yup.string()
+    .trim()
+    .required('Field required')
+    .min(10, 'Field must be more 10'),
 });

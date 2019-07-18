@@ -20,10 +20,9 @@ const Form = styled.form`
 const MessagesDialogList = styled.div`
   padding: 80px 30px;
   overflow: auto;
-  max-height: 100%; 
+  max-height: 100%;
   height: 100%;
 `;
-
 
 const MessagesWrapper = styled.div`
   flex: 1;
@@ -32,17 +31,23 @@ const MessagesWrapper = styled.div`
 `;
 
 function MessageView({
-                       messages,
-                       message,
-                       setMessage,
-                       viewerId,
-                       chat,
-                       sendMessage,
-                       messagesList,
-                     }) {
+   messages,
+   message,
+   setMessage,
+   viewerId,
+   chat,
+   sendMessage,
+   messagesList,
+  location
+}) {
 
+  let participant;
+  if(chat) {
+    participant = chat.participants
+      ? chat.participants[0]
+      : location.state.participant;
+  }
 
-  const participant = (chat ? chat.participants[0] : null);
 
   return (
     <MessagesWrapper>

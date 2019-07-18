@@ -175,6 +175,7 @@ const AddFavorite = styled.button`
   height: 47px;
   color: #349a89;
   margin-bottom: 15px;
+  background-color: #fff;
   svg {
     margin-right: 14px;
     vertical-align: middle;
@@ -193,16 +194,16 @@ const AddedFavorite = styled(AddFavorite)`
 `;
 
 const Card = ({
-                viewerId,
-                product,
-                owner,
-                isLoading,
-                isError,
-                error,
-                toggleModal,
-                isModalOpen,
-                toggleSaveProduct,
-              }) => {
+  viewerId,
+  product,
+  owner,
+  isLoading,
+  isError,
+  error,
+  toggleModal,
+  isModalOpen,
+  toggleSaveProduct,
+}) => {
   if (isError) {
     return <div className="block error-block">{error}</div>;
   }

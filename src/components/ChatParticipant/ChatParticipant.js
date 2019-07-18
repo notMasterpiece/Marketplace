@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { Avatar } from '..';
 
 const MessageUserBlock = styled.div`
-  background-color: #F5F7FB;
+  background-color: #f5f7fb;
   position: absolute;
   top: 0;
   left: 0;
@@ -38,11 +38,12 @@ const MessageUserLeft = styled.div`
     text-decoration: none;
     color: #131314;
     font-size: 15px;
-    align-items: center; 
+    align-items: center;
   }
 `;
 
 function ChatParticipant({ participant }) {
+  console.log(participant);
 
   if (!participant) {
     return null;

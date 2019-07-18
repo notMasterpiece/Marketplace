@@ -17,7 +17,7 @@ const Name = styled.div`
 function Avatar({ user }) {
   const { photo, fullName, background } = user;
 
-  const color = background || 'red';
+  const color = background || '#3f51b5';
 
   return (
     <Fragment>

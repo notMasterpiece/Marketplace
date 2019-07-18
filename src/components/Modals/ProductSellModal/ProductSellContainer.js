@@ -15,17 +15,20 @@ const enhancer = compose(
   withState('message', 'setMessage', ''),
   withHandlers({
     submit: (props) => async ({ message }) => {
+
       if (!props.product.chatId) {
         const data = await props.createChat(props.product.id);
         await props.sendMessage(data, message);
-        props.history.push(generatePath(routes.message, { id: data }));
-        debugger;
+        props.history.push({
+          pathname: generatePath(routes.message, { id: data }),
+          state: { participant: props.owner },
+        });
       } else {
-        debugger;
         await props.sendMessage(props.product.chatId, message);
-        props.history.push(
-          generatePath(routes.message, { id: props.product.chatId }),
-        );
+        props.history.push({
+          pathname: generatePath(routes.message, { id: props.product.chatId }),
+          state: { participant: props.owner },
+        });
       }
     },
   }),

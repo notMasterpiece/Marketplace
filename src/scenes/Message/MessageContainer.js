@@ -19,13 +19,14 @@ import {
 const enhancer = compose(
   withRouter,
   connect(
-    (state, props) => {
-      return ({
+    (state, props) => ({
         messages: getMessages(state, props.match.params.id),
         viewerId: state.viewer.profile.id,
         chat: getChat(state, props.match.params.id),
-    });
-  }, { fetchMessages, sendMessage, getChat }),
+      }
+    ),
+    { fetchMessages, sendMessage, getChat },
+  ),
   withState('message', 'setMessage', ''),
   withHandlers({
     sendMessage: (props) => () => {
@@ -41,9 +42,11 @@ const enhancer = compose(
   }),
   lifecycle({
     componentDidMount() {
-      this.props.fetchMessages(
-        this.props.location.pathname.replace('/chats/', ''),
-      );
+      if (!this.props.location.state) {
+        this.props.fetchMessages(
+          this.props.location.pathname.replace('/chats/', ''),
+        );
+      }
     },
     componentDidUpdate(prevProps) {
       const { id } = this.props.match.params;
