@@ -43,8 +43,6 @@ const MessageUserLeft = styled.div`
 `;
 
 function ChatParticipant({ participant }) {
-  console.log(participant);
-
   if (!participant) {
     return null;
   }
@@ -53,9 +51,7 @@ function ChatParticipant({ participant }) {
   return (
     <MessageUserBlock>
       <MessageUserLeft>
-        <Link
-          to={`/users/${id}/products`}
-        >
+        <Link to={`/users/${id}/products`}>
           <MessageUserAvatar>
             <Avatar user={participant} />
           </MessageUserAvatar>

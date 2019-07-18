@@ -1,9 +1,7 @@
-import uuid from 'uuid/v4';
-
-export const createMessage = ({text, chatId, ownerId}) => ({
-   id: uuid(),
-   text,
-   chatId,
-   createdAt: new Date().getTime(),
-   ownerId
+export const createMessage = ({ text, chatId, ownerId }) => ({
+  id: new Date().getTime(),
+  text,
+  chatId,
+  createdAt: new Date().getTime(),
+  ownerId,
 });
